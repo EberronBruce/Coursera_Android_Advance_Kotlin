@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
     @Composable
     fun InitUI() {
         val products by productsState.collectAsState()
-        ProductsGrid(products = products)
+        ProductsGrid(products = products, this::startProductActivity)
     }
 
     private fun startProductActivity(productItem: ProductItem) {
@@ -37,8 +37,8 @@ class MainActivity : ComponentActivity() {
             // Pass necessary extra parameters
             putExtra(ProductActivity.KEY_TITLE, productItem.title)
             putExtra(ProductActivity.KEY_PRICE, productItem.price)
-            putExtra(ProductActivity.KEY_IMAGE, productItem.category)
-            putExtra(ProductActivity.KEY_CATEGORY, productItem.image)
+            putExtra(ProductActivity.KEY_CATEGORY, productItem.category)
+            putExtra(ProductActivity.KEY_IMAGE, productItem.image)
         }
 
         startActivity(intent)

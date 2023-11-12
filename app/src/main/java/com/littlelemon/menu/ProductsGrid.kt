@@ -18,9 +18,10 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 
+//Task 4
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun ProductsGrid(products: Products) {
+fun ProductsGrid(products: Products, startProductActivity: (ProductItem) -> Unit) {
     LazyVerticalGrid(
         cells = GridCells.Fixed(count = 2),
         contentPadding = PaddingValues(16.dp),
@@ -39,7 +40,7 @@ fun ProductsGrid(products: Products) {
                         contentDescription = productItem.title,
                         contentScale = ContentScale.Crop,
                         modifier = Modifier.clickable {
-                            //TODO start ProductActivity and pass the productItem details
+                            startProductActivity(productItem)
                         }
                     )
                     Text(text = productItem.title)
