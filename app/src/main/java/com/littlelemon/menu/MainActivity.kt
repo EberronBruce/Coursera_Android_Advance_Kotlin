@@ -1,5 +1,6 @@
 package com.littlelemon.menu
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -30,7 +31,17 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun startProductActivity(productItem: ProductItem) {
-        //TODO instantiate intent and pass extra parameter from product
+        //Task 2
+        // Declare an Intent variable
+        val intent = Intent(this, ProductActivity::class.java).apply {
+            // Pass necessary extra parameters
+            putExtra(ProductActivity.KEY_TITLE, productItem.title)
+            putExtra(ProductActivity.KEY_PRICE, productItem.price)
+            putExtra(ProductActivity.KEY_IMAGE, productItem.category)
+            putExtra(ProductActivity.KEY_CATEGORY, productItem.image)
+        }
+
+        startActivity(intent)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
